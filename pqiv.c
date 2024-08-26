@@ -6805,6 +6805,7 @@ void handle_input_event(guint key_binding_value) {/*{{{*/
 	free(debug_keybinding);
 	// */
 
+  return;
 	gboolean is_mouse = (key_binding_value >> 31) & 1;
 	guint state = (key_binding_value >> (31 - KEY_BINDING_STATE_BITS)) & ((1 << KEY_BINDING_STATE_BITS) - 1);
 	guint keycode = key_binding_value & ((1 << (31 - KEY_BINDING_STATE_BITS)) - 1);
@@ -6991,8 +6992,10 @@ gboolean window_motion_notify_callback(GtkWidget *widget, GdkEventMotion *event,
 
 		if(event->state & GDK_BUTTON1_MASK) {
 			if(application_mode == DEFAULT) {
+			  /*
 				current_shift_x += dev_x;
 				current_shift_y += dev_y;
+			  */
 			}
 		}
 		else if(event->state & GDK_BUTTON3_MASK) {
